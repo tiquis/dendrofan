@@ -1,6 +1,6 @@
 # dendrofan
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21251841.svg)](https://doi.org/10.5281/zenodo.21251841)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21251840.svg)](https://doi.org/10.5281/zenodo.21251840)
 
 Circular ("fan") dendrograms for Python, in the visual style of R's
 [`ape`](https://cran.r-project.org/package=ape) package
@@ -120,12 +120,17 @@ spans, single/two-leaf trees).
 
 ## Citation
 
-If you use dendrofan in a manuscript, please cite the software itself
-via its Zenodo DOI (see [`CITATION.cff`](CITATION.cff), or use GitHub's
-"Cite this repository" button):
+If you use dendrofan in a manuscript, cite the exact version you used
+(see [`CITATION.cff`](CITATION.cff), or use GitHub's "Cite this
+repository" button, which always tracks the version in this file):
 
-> Magallanes Quintanar, R. (2026). dendrofan v0.1.0 [Software]. Zenodo.
-> https://doi.org/10.5281/zenodo.21251841
+> Magallanes Quintanar, R. (2026). dendrofan v0.1.2 [Software]. Zenodo.
+> https://doi.org/10.5281/zenodo.21252348
+
+The badge at the top of this page uses the Zenodo *concept* DOI
+(`10.5281/zenodo.21251840`), which always resolves to the latest
+release — use that one only if you want to point to "whatever version
+is current," not for citing a specific analysis.
 
 Please also cite the underlying methods it wraps:
 
