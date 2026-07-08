@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: dendrofan
+version: 0.1.0
+date-released: "2026-07-08"
+doi: 10.5281/zenodo.21251841
+license: MIT
+repository-code: "https://github.com/tiquis/dendrofan"
+authors:
+  - family-names: "Magallanes Quintanar"
+    given-names: "Rafael"
+    affiliation: "Universidad Autónoma de Zacatecas"
+keywords:
+  - dendrogram
+  - hierarchical-clustering
+  - circular-plot
+  - fan-plot
+  - phylogenetics
+  - data-visualization
+  - scipy
+  - matplotlib

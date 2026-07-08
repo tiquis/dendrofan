@@ -1,5 +1,7 @@
 # dendrofan
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21251841.svg)](https://doi.org/10.5281/zenodo.21251841)
+
 Circular ("fan") dendrograms for Python, in the visual style of R's
 [`ape`](https://cran.r-project.org/package=ape) package
 (`plot.phylo(type = "fan")`, Paradis & Schliep, 2019) — computed and
@@ -118,8 +120,14 @@ spans, single/two-leaf trees).
 
 ## Citation
 
-If you use dendrofan in a manuscript, please also cite the underlying
-methods it wraps:
+If you use dendrofan in a manuscript, please cite the software itself
+via its Zenodo DOI (see [`CITATION.cff`](CITATION.cff), or use GitHub's
+"Cite this repository" button):
+
+> Magallanes Quintanar, R. (2026). dendrofan v0.1.0 [Software]. Zenodo.
+> https://doi.org/10.5281/zenodo.21251841
+
+Please also cite the underlying methods it wraps:
 
 - Virtanen, P. et al. (2020). SciPy 1.0: fundamental algorithms for
   scientific computing in Python. *Nature Methods*, 17, 261-272.
