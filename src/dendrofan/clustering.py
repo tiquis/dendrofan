@@ -76,6 +76,29 @@ class DendrogramLayout:
 ArrayLike = Union[np.ndarray, Sequence[Sequence[float]]]
 
 
+def _validate_linkage_index_bounds(Z: np.ndarray) -> None:
+    """Check that every merge in ``Z`` only references clusters formed so far.
+
+    ``scipy.cluster.hierarchy.is_valid_linkage`` is not sufficient on its
+    own: at least as of SciPy 1.17, it fails to flag a linkage matrix
+    whose child indices point past the clusters available at that row
+    (verified to correctly reject the same input under SciPy 1.13). Left
+    unchecked, such a matrix passes validation but then crashes
+    ``dendrogram()`` deep inside SciPy with a bare ``IndexError`` instead
+    of a clear dendrofan exception. This redoes that specific check
+    ourselves so behavior does not depend on the installed SciPy version.
+    """
+    n = Z.shape[0] + 1
+    for i, row in enumerate(Z):
+        left, right = row[0], row[1]
+        upper_bound = n + i  # valid cluster ids at merge i: 0 .. n+i-1
+        if not (0 <= left < upper_bound and 0 <= right < upper_bound):
+            raise InvalidLinkageError(
+                f"row {i} of `Z` references cluster index {row[:2].tolist()}, "
+                f"but only clusters 0..{upper_bound - 1} exist at that point"
+            )
+
+
 def _validate_labels(labels: Optional[Sequence[str]], n_leaves: int) -> List[str]:
     if labels is None:
         return [str(i) for i in range(n_leaves)]
@@ -170,6 +193,7 @@ def build_layout(
                 "`Z` is not a valid SciPy linkage matrix; see "
                 "scipy.cluster.hierarchy.is_valid_linkage for the required format"
             )
+        _validate_linkage_index_bounds(Z)
 
     n_leaves = Z.shape[0] + 1
     if n_leaves < 2:

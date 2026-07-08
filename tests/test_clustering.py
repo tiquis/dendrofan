@@ -47,6 +47,20 @@ def test_build_layout_rejects_invalid_linkage_matrix():
         build_layout(Z=bad_Z)
 
 
+def test_build_layout_rejects_out_of_range_index_even_if_is_valid_linkage_is_not(monkeypatch):
+    # SciPy's own is_valid_linkage does not reliably catch this on every
+    # version (observed: catches it under SciPy 1.13, misses it under
+    # SciPy 1.17). Force the "it was missed" branch to make sure
+    # dendrofan's own bounds check still catches it regardless of which
+    # SciPy version is installed.
+    import dendrofan.clustering as clustering_module
+
+    monkeypatch.setattr(clustering_module, "is_valid_linkage", lambda Z: True)
+    bad_Z = np.array([[0.0, 5.0, 0.5, 2.0]])
+    with pytest.raises(InvalidLinkageError):
+        build_layout(Z=bad_Z)
+
+
 def test_build_layout_rejects_invalid_condensed_vector():
     with pytest.raises(InvalidLinkageError):
         # Length 4 is not n*(n-1)/2 for any integer n (3 -> n=3, 6 -> n=4, ...).
