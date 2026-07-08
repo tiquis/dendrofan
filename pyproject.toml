@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dendrofan"
-version = "0.1.0"
+version = "0.1.1"
 description = "Circular (\"fan\") dendrograms for Python, in the visual style of R's ape package"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.8"
 authors = [
-    { name = "dendrofan contributors" },
+    { name = "Rafael Magallanes Quintanar" },
 ]
 keywords = [
     "dendrogram",
@@ -39,11 +39,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "pytest-mpl"]
+dev = ["pytest>=7", "pytest-mpl", "build"]
 
 [project.urls]
-Homepage = "https://github.com/example/dendrofan"
-Issues = "https://github.com/example/dendrofan/issues"
+Homepage = "https://github.com/tiquis/dendrofan"
+Issues = "https://github.com/tiquis/dendrofan/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
